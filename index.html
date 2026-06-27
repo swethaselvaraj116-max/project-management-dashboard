@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex | Premium Project Management Dashboard</title>
+  <meta name="description" content="A premium and responsive project management dashboard frontend built with vanilla HTML, CSS, and JS.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="app-container">
+    <!-- Glowing background elements -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+
+      <div class="brand">
+        <div class="brand-icon">A</div>
+        <span class="brand-name">ApexFlow</span>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#" class="nav-link active" data-view="dashboard" id="nav-dashboard">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" /><rect x="14" y="3" width="7" height="5" rx="1" /><rect x="14" y="12" width="7" height="9" rx="1" /><rect x="3" y="16" width="7" height="5" rx="1" /></svg>
+              <span class="nav-label">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-view="kanban" id="nav-kanban">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 3.75H4.5A1.5 1.5 0 003 5.25v13.5a1.5 1.5 0 001.5 1.5H9m3-16.5h4.5a1.5 1.5 0 011.5 1.5v13.5a1.5 1.5 0 01-1.5 1.5H12m-6-12h12m-12 4.5h12m-12 4.5h12" /></svg>
+              <span class="nav-label">Kanban Board</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-view="projects" id="nav-projects">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86m-18 0h18M2.25 13.5a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25h19.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25M2.25 13.5V4.5A2.25 2.25 0 014.5 2.25h15A2.25 2.25 0 0121.75 4.5v9" /></svg>
+              <span class="nav-label">Projects</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-view="calendar" id="nav-calendar">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+              <span class="nav-label">Calendar</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link" data-view="analytics" id="nav-analytics">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" /></svg>
+              <span class="nav-label">Analytics</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-avatar" id="userAvatar">SC</div>
+        <div class="sidebar-user-info">
+          <span class="sidebar-user-name" id="userName">Sarah Connor</span>
+          <span class="sidebar-user-role" id="userRole">Lead Architect</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      
+      <!-- TOP NAVIGATION BAR -->
+      <header class="topbar">
+        <div class="search-container">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /></svg>
+          <input type="text" placeholder="Search tasks, projects..." class="search-input" id="globalSearch">
+        </div>
+
+        <div class="topbar-actions">
+          <button class="action-btn theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+            <!-- Moon Icon -->
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
+            <!-- Sun Icon -->
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3v2.25m0 13.5V21M5.25 12h2.25m9 0h2.25m-14.25 6.75l1.591-1.591m11.318-11.318l1.591-1.591m-14.25-1.591l1.591 1.591m11.318 11.318l1.591 1.591M12 7.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" /></svg>
+          </button>
+
+          <button class="action-btn" id="notifBtn" aria-label="Notifications">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
+            <span class="btn-badge"></span>
+          </button>
+
+          <button class="btn-primary" id="createNewBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15" /></svg>
+            <span>Create New</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINER -->
+      <div class="view-container">
+
+        <!-- 1. DASHBOARD VIEW -->
+        <section id="view-dashboard" class="view-section">
+          <div class="view-header">
+            <h1 class="view-title">Welcome back, Sarah!</h1>
+            <p class="view-subtitle">Here is what's happening with your projects today.</p>
+          </div>
+
+          <!-- Stat Grid -->
+          <div class="dashboard-grid">
+            <div class="stat-card primary">
+              <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86" /></svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-active-projects">0</span>
+                <span class="stat-label">Active Projects</span>
+              </div>
+            </div>
+
+            <div class="stat-card success">
+              <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-completed-tasks">0</span>
+                <span class="stat-label">Completed Tasks</span>
+              </div>
+            </div>
+
+            <div class="stat-card warning">
+              <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-pending-tasks">0</span>
+                <span class="stat-label">Tasks In Progress</span>
+              </div>
+            </div>
+
+            <div class="stat-card info">
+              <div class="stat-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 8.25H9m6 3H9m3 3H9m12 1.5a3 3 0 01-3 3H6a3 3 0 01-3-3V6.75a3 3 0 013-3h12a3 3 0 013 3v10.5z" /></svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-value" id="stat-completion-rate">0%</span>
+                <span class="stat-label">Overall Progress</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mid sections -->
+          <div class="dashboard-section-grid">
+            <!-- Project Progress list -->
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <h2 class="panel-title">Project Progress</h2>
+                <a href="#" class="panel-link" data-view-target="projects">View All Projects</a>
+              </div>
+              <div class="project-progress-list" id="dashboardProgressList">
+                <!-- Dynamic render -->
+              </div>
+            </div>
+
+            <!-- Activity panel -->
+            <div class="dashboard-panel">
+              <div class="panel-header">
+                <h2 class="panel-title">Recent Activity</h2>
+              </div>
+              <div class="activity-feed" id="dashboardActivityList">
+                <!-- Dynamic render -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. KANBAN BOARD VIEW -->
+        <section id="view-kanban" class="view-section hidden">
+          <div class="view-header">
+            <h1 class="view-title">Task Board</h1>
+            <p class="view-subtitle">Organize and manage tasks across workflow stages.</p>
+          </div>
+
+          <div class="kanban-toolbar">
+            <div class="flex align-center gap-2">
+              <span class="form-label" style="margin-bottom:0; font-size: 0.9rem;">Filter by Project:</span>
+              <select class="filter-select" id="kanbanProjectFilter">
+                <option value="all">All Projects</option>
+                <!-- Dynamic options -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Board Columns -->
+          <div class="kanban-board">
+            <!-- Todo Column -->
+            <div class="kanban-column" id="col-todo">
+              <div class="column-header">
+                <div class="column-title-group">
+                  <span class="column-title">To Do</span>
+                  <span class="column-count" id="count-todo">0</span>
+                </div>
+                <button class="add-card-btn" data-status="todo" aria-label="Add task to Todo">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </button>
+              </div>
+              <div class="cards-list" id="list-todo" data-status="todo">
+                <!-- Cards render here -->
+              </div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="kanban-column" id="col-in_progress">
+              <div class="column-header">
+                <div class="column-title-group">
+                  <span class="column-title">In Progress</span>
+                  <span class="column-count" id="count-in_progress">0</span>
+                </div>
+                <button class="add-card-btn" data-status="in_progress" aria-label="Add task to In Progress">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </button>
+              </div>
+              <div class="cards-list" id="list-in_progress" data-status="in_progress">
+                <!-- Cards render here -->
+              </div>
+            </div>
+
+            <!-- Review Column -->
+            <div class="kanban-column" id="col-review">
+              <div class="column-header">
+                <div class="column-title-group">
+                  <span class="column-title">In Review</span>
+                  <span class="column-count" id="count-review">0</span>
+                </div>
+                <button class="add-card-btn" data-status="review" aria-label="Add task to Review">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </button>
+              </div>
+              <div class="cards-list" id="list-review" data-status="review">
+                <!-- Cards render here -->
+              </div>
+            </div>
+
+            <!-- Done Column -->
+            <div class="kanban-column" id="col-done">
+              <div class="column-header">
+                <div class="column-title-group">
+                  <span class="column-title">Completed</span>
+                  <span class="column-count" id="count-done">0</span>
+                </div>
+                <button class="add-card-btn" data-status="done" aria-label="Add task to Done">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                </button>
+              </div>
+              <div class="cards-list" id="list-done" data-status="done">
+                <!-- Cards render here -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. PROJECTS LIST VIEW -->
+        <section id="view-projects" class="view-section hidden">
+          <div class="view-header flex justify-between align-center">
+            <div>
+              <h1 class="view-title">Projects Explorer</h1>
+              <p class="view-subtitle">Track high-level project goals, budgets, and milestones.</p>
+            </div>
+            <button class="btn-primary" id="newProjectBtn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4.5v15m7.5-7.5h-15" /></svg>
+              <span>Add Project</span>
+            </button>
+          </div>
+
+          <div class="projects-grid" id="projectsGrid">
+            <!-- Dynamic render of project cards -->
+          </div>
+        </section>
+
+        <!-- 4. CALENDAR VIEW -->
+        <section id="view-calendar" class="view-section hidden">
+          <div class="view-header">
+            <h1 class="view-title">Schedule Calendar</h1>
+            <p class="view-subtitle">View task deadlines and project milestones across the month.</p>
+          </div>
+
+          <div class="calendar-container">
+            <div class="calendar-header">
+              <h2 class="calendar-title" id="calendarMonthYear">June 2026</h2>
+              <div class="calendar-nav-buttons">
+                <button class="action-btn" id="calendarPrevBtn" aria-label="Previous Month">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+                </button>
+                <button class="btn-secondary" id="calendarTodayBtn" style="padding:0.4rem 0.85rem; font-size:0.8rem;">Today</button>
+                <button class="action-btn" id="calendarNextBtn" aria-label="Next Month">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:16px;height:16px;"><path d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="calendar-grid-header">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+
+            <div class="calendar-grid" id="calendarGrid">
+              <!-- Calendar days injected by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. ANALYTICS VIEW -->
+        <section id="view-analytics" class="view-section hidden">
+          <div class="view-header">
+            <h1 class="view-title">Performance Analytics</h1>
+            <p class="view-subtitle">Insights on productivity, project distribution, and task completions.</p>
+          </div>
+
+          <div class="analytics-grid">
+            <!-- Line Chart Card -->
+            <div class="chart-card">
+              <div class="panel-header">
+                <h2 class="panel-title">Task Completion History (Weekly)</h2>
+              </div>
+              <div class="chart-container" id="lineChartContainer">
+                <!-- SVG Line Chart will be dynamically generated here -->
+              </div>
+              <div class="analytics-stats">
+                <div class="analytics-stat-item">
+                  <span class="analytics-stat-title">Created</span>
+                  <div class="analytics-stat-number" id="stats-total-created">0</div>
+                </div>
+                <div class="analytics-stat-item">
+                  <span class="analytics-stat-title">Completed</span>
+                  <div class="analytics-stat-number" id="stats-total-completed">0</div>
+                </div>
+                <div class="analytics-stat-item">
+                  <span class="analytics-stat-title">Ratio</span>
+                  <div class="analytics-stat-number" id="stats-completion-ratio">0%</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Donut Chart Card -->
+            <div class="chart-card">
+              <div class="panel-header">
+                <h2 class="panel-title">Projects Status Distribution</h2>
+              </div>
+              <div class="chart-container" id="donutChartContainer">
+                <!-- SVG Donut Chart will be dynamically generated here -->
+              </div>
+              <div class="analytics-stats">
+                <div class="analytics-stat-item" style="border-top: 3px solid var(--success);">
+                  <span class="analytics-stat-title">Active</span>
+                  <div class="analytics-stat-number" id="stats-active-count">0</div>
+                </div>
+                <div class="analytics-stat-item" style="border-top: 3px solid var(--info);">
+                  <span class="analytics-stat-title">Completed</span>
+                  <div class="analytics-stat-number" id="stats-completed-count">0</div>
+                </div>
+                <div class="analytics-stat-item" style="border-top: 3px solid var(--warning);">
+                  <span class="analytics-stat-title">On Hold</span>
+                  <div class="analytics-stat-number" id="stats-onhold-count">0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+     MODALS
+     ========================================================================== */ -->
+
+  <!-- Modal 1: Create/Edit Project -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="projectModalTitle">Create New Project</h3>
+        <button class="modal-close" id="closeProjectModal" aria-label="Close modal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <form id="projectForm">
+        <input type="hidden" id="projectIdInput">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="projName">Project Name</label>
+            <input type="text" id="projName" class="form-control" placeholder="e.g. Mobile App Development" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="projDesc">Description</label>
+            <textarea id="projDesc" class="form-control" rows="3" placeholder="Describe the project goal..." required></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="projCategory">Category</label>
+              <input type="text" id="projCategory" class="form-control" placeholder="e.g. Marketing, Web Development" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projStatus">Status</label>
+              <select id="projStatus" class="form-control" required>
+                <option value="active">Active</option>
+                <option value="completed">Completed</option>
+                <option value="on_hold">On Hold</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="projStartDate">Start Date</label>
+              <input type="date" id="projStartDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projEndDate">End Date</label>
+              <input type="date" id="projEndDate" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="projClient">Client Name</label>
+              <input type="text" id="projClient" class="form-control" placeholder="e.g. Acme Corp" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="projBudget">Budget ($)</label>
+              <input type="number" id="projBudget" class="form-control" placeholder="e.g. 50000" min="0" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="projLead">Project Lead</label>
+            <select id="projLead" class="form-control" required>
+              <!-- Dynamic members list -->
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelProjectBtn">Cancel</button>
+          <button type="submit" class="btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Create/Edit Task -->
+  <div class="modal-overlay" id="taskModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="taskModalTitle">Create New Task</h3>
+        <button class="modal-close" id="closeTaskModal" aria-label="Close modal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <form id="taskForm">
+        <input type="hidden" id="taskIdInput">
+        <input type="hidden" id="taskStatusInput" value="todo">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="taskProject">Associated Project</label>
+            <select id="taskProject" class="form-control" required>
+              <!-- Dynamic option list of projects -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="taskTitle">Task Title</label>
+            <input type="text" id="taskTitle" class="form-control" placeholder="e.g. Update Figma layout files" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="taskDesc">Description</label>
+            <textarea id="taskDesc" class="form-control" rows="3" placeholder="Detail the task description..."></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="taskPriority">Priority</label>
+              <select id="taskPriority" class="form-control" required>
+                <option value="low">Low Priority</option>
+                <option value="medium" selected>Medium Priority</option>
+                <option value="high">High Priority</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="taskDueDate">Due Date</label>
+              <input type="date" id="taskDueDate" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Assignees</label>
+            <div class="assignees-picker" id="taskAssigneesList">
+              <!-- Checkboxes with dynamic team members -->
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="cancelTaskBtn">Cancel</button>
+          <button type="submit" class="btn-primary">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 3: Task Details & Checklist View -->
+  <div class="modal-overlay" id="taskDetailsModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span class="card-project-tag" id="detailProjectTag">PROJECT NAME</span>
+          <h3 class="modal-title" id="detailTaskTitle" style="margin-top:0.25rem;">Task Title</h3>
+        </div>
+        <button class="modal-close" id="closeDetailsModal" aria-label="Close modal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Priority / Due Date / Status row -->
+        <div class="form-row" style="margin-bottom: 1.5rem; background: rgba(0,0,0,0.02); padding: 0.85rem; border-radius: var(--radius-md);">
+          <div>
+            <span class="form-label" style="font-size:0.75rem; margin-bottom:0.25rem;">Priority</span>
+            <span class="priority-tag medium" id="detailPriority">Medium</span>
+          </div>
+          <div>
+            <span class="form-label" style="font-size:0.75rem; margin-bottom:0.25rem;">Due Date</span>
+            <span style="font-size:0.85rem; font-weight: 600;" id="detailDueDate">2026-06-30</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <h4 class="form-label">Description</h4>
+          <p id="detailDesc" style="font-size:0.85rem; color: var(--text-muted); line-height: 1.5;">No description provided.</p>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <h4 class="form-label" style="display:flex; justify-content:space-between;">
+            <span>Subtasks Checklist</span>
+            <span style="font-weight: normal; color: var(--text-muted);" id="detailChecklistRatio">0/0</span>
+          </h4>
+          <div class="task-checklist-list" id="detailChecklistList">
+            <!-- Checklist items -->
+          </div>
+          <!-- Add subtask input -->
+          <div class="flex gap-2" style="margin-top: 0.85rem;">
+            <input type="text" id="newSubtaskInput" class="form-control" style="padding: 0.45rem 0.75rem; font-size: 0.85rem;" placeholder="Add subtask...">
+            <button type="button" class="btn-primary" id="addSubtaskBtn" style="padding: 0.45rem 0.85rem; font-size: 0.85rem;">Add</button>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 1.5rem;">
+          <h4 class="form-label">Assigned Team Members</h4>
+          <div class="flex gap-2" id="detailAssigneesGroup" style="margin-top:0.5rem; flex-wrap: wrap;">
+            <!-- Assignee list -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="display:flex; justify-content: space-between;">
+        <button type="button" class="btn-secondary" id="deleteTaskBtn" style="background:var(--danger-glow); color:var(--danger); border:1px solid transparent;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:14px; height:14px; stroke:currentColor; stroke-width:2.5; fill:none; display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+          Delete Task
+        </button>
+        <div class="flex gap-2">
+          <button type="button" class="btn-secondary" id="editTaskDetailsBtn">Edit Task</button>
+          <button type="button" class="btn-primary" id="saveDetailsBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notifications Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Choose Creation Type Modal (Project vs Task Selector Dialog) -->
+  <div class="modal-overlay" id="createSelectorModal">
+    <div class="modal-content" style="max-width:350px;">
+      <div class="modal-header">
+        <h3 class="modal-title">What would you like to create?</h3>
+        <button class="modal-close" id="closeSelectorModal" aria-label="Close modal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="modal-body" style="display:flex; flex-direction:column; gap:1rem; padding: 2rem 1.5rem;">
+        <button class="btn-primary" id="selectorProjectBtn" style="padding: 1rem; font-size:1rem; justify-content:center;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:20px;height:20px;"><path d="M2.25 13.5h3.86a2.25 2.25 0 012.008 1.24l.885 1.77a2.25 2.25 0 002.007 1.24h1.98a2.25 2.25 0 002.007-1.24l.885-1.77a2.25 2.25 0 012.007-1.24h3.86" /></svg>
+          <span>New Project</span>
+        </button>
+        <button class="btn-primary" id="selectorTaskBtn" style="padding: 1rem; font-size:1rem; justify-content:center; background: var(--success); box-shadow: var(--success-glow);">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width:20px;height:20px;"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
+          <span>New Task</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

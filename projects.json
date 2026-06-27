@@ -1,0 +1,280 @@
+{
+  "projects": [
+    {
+      "id": "proj-1",
+      "name": "Acme Website Redesign",
+      "description": "Revamp the corporate website with a modern design, improved SEO, and React-based interactive components.",
+      "category": "Web Development",
+      "status": "active",
+      "progress": 65,
+      "startDate": "2026-05-01",
+      "endDate": "2026-07-15",
+      "client": "Acme Corporation",
+      "budget": 45000,
+      "lead": "mem-1"
+    },
+    {
+      "id": "proj-2",
+      "name": "Mobile App Launch",
+      "description": "Design, build, and deploy the new iOS & Android delivery tracking app to App Store and Google Play.",
+      "category": "Mobile Apps",
+      "status": "active",
+      "progress": 40,
+      "startDate": "2026-05-15",
+      "endDate": "2026-08-30",
+      "client": "Swift Logistics",
+      "budget": 85000,
+      "lead": "mem-2"
+    },
+    {
+      "id": "proj-3",
+      "name": "Marketing Automation Setup",
+      "description": "Configure HubSpot integration, email templates, drip campaigns, and lead scoring pipelines.",
+      "category": "Marketing",
+      "status": "completed",
+      "progress": 100,
+      "startDate": "2026-04-10",
+      "endDate": "2026-06-15",
+      "client": "Vortex SaaS",
+      "budget": 12000,
+      "lead": "mem-3"
+    },
+    {
+      "id": "proj-4",
+      "name": "Security Audit & Compliance",
+      "description": "Perform penetration testing and achieve SOC2 Type II compliance readiness.",
+      "category": "Cybersecurity",
+      "status": "on_hold",
+      "progress": 15,
+      "startDate": "2026-06-01",
+      "endDate": "2026-10-15",
+      "client": "Fintech Secure",
+      "budget": 30000,
+      "lead": "mem-4"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "projectId": "proj-1",
+      "title": "Create High-fidelity Wireframes",
+      "description": "Design desktop and mobile mockups in Figma for main landing page, dashboard, and pricing pages.",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-05-15",
+      "assignees": ["mem-2", "mem-5"],
+      "checklist": [
+        { "id": "check-1-1", "text": "Landing page wireframe", "completed": true },
+        { "id": "check-1-2", "text": "Dashboard view mockup", "completed": true },
+        { "id": "check-1-3", "text": "Mobile layout responsiveness", "completed": true },
+        { "id": "check-1-4", "text": "Design system & assets export", "completed": true }
+      ]
+    },
+    {
+      "id": "task-2",
+      "projectId": "proj-1",
+      "title": "Develop Landing Page Frontend",
+      "description": "Code the responsive landing page using HTML5 semantic elements and interactive CSS animations.",
+      "status": "in_progress",
+      "priority": "medium",
+      "dueDate": "2026-07-02",
+      "assignees": ["mem-1"],
+      "checklist": [
+        { "id": "check-2-1", "text": "Setup project structure", "completed": true },
+        { "id": "check-2-2", "text": "Implement CSS variables & layout", "completed": true },
+        { "id": "check-2-3", "text": "Integrate animations", "completed": false },
+        { "id": "check-2-4", "text": "Cross-browser testing", "completed": false }
+      ]
+    },
+    {
+      "id": "task-3",
+      "projectId": "proj-1",
+      "title": "Setup Headless CMS Integration",
+      "description": "Integrate Contentful API to pull dynamic blog posts, press releases, and team biographies.",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2026-07-10",
+      "assignees": ["mem-3"],
+      "checklist": [
+        { "id": "check-3-1", "text": "Configure Contentful space", "completed": false },
+        { "id": "check-3-2", "text": "Fetch articles in frontend", "completed": false }
+      ]
+    },
+    {
+      "id": "task-4",
+      "projectId": "proj-2",
+      "title": "Database Schema Design",
+      "description": "Create PostgreSQL schemas for tracking deliveries, updating user locations, and billing.",
+      "status": "done",
+      "priority": "high",
+      "dueDate": "2026-05-25",
+      "assignees": ["mem-4"],
+      "checklist": [
+        { "id": "check-4-1", "text": "Entity Relationship Diagram (ERD)", "completed": true },
+        { "id": "check-4-2", "text": "Setup migrations & seeders", "completed": true },
+        { "id": "check-4-3", "text": "Optimize geolocation indexes", "completed": true }
+      ]
+    },
+    {
+      "id": "task-5",
+      "projectId": "proj-2",
+      "title": "Integrate MapBox SDK",
+      "description": "Implement real-time driver tracking on the map view using websockets and Mapbox gl js.",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-07-05",
+      "assignees": ["mem-2", "mem-4"],
+      "checklist": [
+        { "id": "check-5-1", "text": "Mapbox API token configuration", "completed": true },
+        { "id": "check-5-2", "text": "Render custom vehicle markers", "completed": false },
+        { "id": "check-5-3", "text": "Websocket tracking subscription", "completed": false }
+      ]
+    },
+    {
+      "id": "task-6",
+      "projectId": "proj-2",
+      "title": "Authentication & Authorization",
+      "description": "Setup JWT-based secure user log in, registration, password recovery, and role management.",
+      "status": "review",
+      "priority": "high",
+      "dueDate": "2026-06-29",
+      "assignees": ["mem-1", "mem-5"],
+      "checklist": [
+        { "id": "check-6-1", "text": "Backend auth endpoints", "completed": true },
+        { "id": "check-6-2", "text": "Frontend login form", "completed": true },
+        { "id": "check-6-3", "text": "Refresh token mechanism", "completed": true },
+        { "id": "check-6-4", "text": "Social OAuth integrations", "completed": false }
+      ]
+    },
+    {
+      "id": "task-7",
+      "projectId": "proj-3",
+      "title": "Connect Lead Scoring Rules",
+      "description": "Define CRM rules that rank leads depending on product interactions, website views, and budget.",
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2026-06-10",
+      "assignees": ["mem-3"],
+      "checklist": [
+        { "id": "check-7-1", "text": "Define score values in Hubspot", "completed": true },
+        { "id": "check-7-2", "text": "Test scoring triggers with test users", "completed": true }
+      ]
+    },
+    {
+      "id": "task-8",
+      "projectId": "proj-3",
+      "title": "Email Template Designs",
+      "description": "Create responsive HTML templates for welcome emails, weekly digests, and abandoned cart alerts.",
+      "status": "done",
+      "priority": "low",
+      "dueDate": "2026-06-05",
+      "assignees": ["mem-5"],
+      "checklist": [
+        { "id": "check-8-1", "text": "Welcome email", "completed": true },
+        { "id": "check-8-2", "text": "Weekly newsletter digest", "completed": true },
+        { "id": "check-8-3", "text": "Cart recovery layout", "completed": true }
+      ]
+    },
+    {
+      "id": "task-9",
+      "projectId": "proj-4",
+      "title": "Vulnerability Scan & Fixes",
+      "description": "Run dependency scans (OWASP dependency check, npm audit) and update vulnerable packages.",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-07-20",
+      "assignees": ["mem-4"],
+      "checklist": [
+        { "id": "check-9-1", "text": "Run automated scanner", "completed": true },
+        { "id": "check-9-2", "text": "Patch critical vulnerabilities", "completed": false },
+        { "id": "check-9-3", "text": "Generate compliance report", "completed": false }
+      ]
+    },
+    {
+      "id": "task-10",
+      "projectId": "proj-1",
+      "title": "Define SEO Meta Tags",
+      "description": "Formulate title schemas, page descriptions, alt tags, and JSON-LD structured data for indexability.",
+      "status": "todo",
+      "priority": "low",
+      "dueDate": "2026-07-12",
+      "assignees": ["mem-5"],
+      "checklist": [
+        { "id": "check-10-1", "text": "Write meta keywords list", "completed": false },
+        { "id": "check-10-2", "text": "Setup Google Search Console config", "completed": false }
+      ]
+    }
+  ],
+  "members": [
+    {
+      "id": "mem-1",
+      "name": "Sarah Connor",
+      "role": "Lead Frontend Architect",
+      "avatar": "SC",
+      "color": "#6366f1",
+      "email": "sarah@example.com"
+    },
+    {
+      "id": "mem-2",
+      "name": "James Smith",
+      "role": "Product Designer",
+      "avatar": "JS",
+      "color": "#ec4899",
+      "email": "james@example.com"
+    },
+    {
+      "id": "mem-3",
+      "name": "Elena Rostova",
+      "role": "Marketing Specialist",
+      "avatar": "ER",
+      "color": "#f59e0b",
+      "email": "elena@example.com"
+    },
+    {
+      "id": "mem-4",
+      "name": "Marcus Aurelius",
+      "role": "Backend Engineer",
+      "avatar": "MA",
+      "color": "#10b981",
+      "email": "marcus@example.com"
+    },
+    {
+      "id": "mem-5",
+      "name": "Chloe Vance",
+      "role": "QA Analyst",
+      "avatar": "CV",
+      "color": "#06b6d4",
+      "email": "chloe@example.com"
+    }
+  ],
+  "activities": [
+    {
+      "id": "act-1",
+      "type": "task_completed",
+      "message": "completed task 'Create High-fidelity Wireframes'",
+      "timestamp": "2026-06-27T10:15:00Z",
+      "user": "James Smith"
+    },
+    {
+      "id": "act-2",
+      "type": "task_created",
+      "message": "added a new task 'Define SEO Meta Tags' to project 'Acme Website Redesign'",
+      "timestamp": "2026-06-27T08:30:00Z",
+      "user": "Sarah Connor"
+    },
+    {
+      "id": "act-3",
+      "type": "comment_added",
+      "message": "commented on 'Authentication & Authorization': 'Ready for review'",
+      "timestamp": "2026-06-26T15:45:00Z",
+      "user": "Chloe Vance"
+    },
+    {
+      "id": "act-4",
+      "type": "project_created",
+      "message": "created a new project: 'Security Audit & Compliance'",
+      "timestamp": "2026-06-25T11:00:00Z",
+      "user": "Marcus Aurelius"
+    }
+  ]
+}
